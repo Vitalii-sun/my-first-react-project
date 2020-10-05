@@ -6,4 +6,39 @@ html, body {
     margin: 0;
     padding: 0;
     text-decoration: none;
+    background-color: rgb(141, 135, 135);
+}
+
+.addButton {
+  display: flex;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  margin-left: 40%;
+  justify-content: center;
+  align-content: center;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: inherit;
+  outline: none;
+  color: #fff;
+  background-color: rgb(23, 24, 110);
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px rgb(98, 112, 149);
+}
+.addButton:hover {background-color: #3e8e41}
+
+.addButton:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.allArticles {
+    display: inline-flex;
+    flex-direction: row;
+    
+   
 }

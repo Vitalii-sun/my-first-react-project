@@ -1,3 +1,14 @@
 @import '../../styles/index.scss';
 
-
+.header {
+    display: flex;
+    flex-direction: row;
+    font-size: 15px;
+    width: 100%;
+    justify-content: center;
+    align-content: space-between;
+    border: solid 1px; 
+    border-radius: 7px;
+    background-color: rgb(47, 158, 143)
+    
+}

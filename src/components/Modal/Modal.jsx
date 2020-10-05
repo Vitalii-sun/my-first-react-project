@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from "react";
+import { A_AddArticlesRequest } from "../../actions";
+import { A_EditArticlesRequest } from "../../actions";
+import { useDispatch } from "react-redux";
 import "./styles.scss";
 
 export default props => {
+  const dispatch = useDispatch();
   const [title, hendleChangeTitle] = useState("");
   const [text, hendleChangeText] = useState("");
 
   useEffect(() => {
+    console.log(props.selectedArticle);
     if (props.selectedArticle) {
       hendleChangeTitle(props.selectedArticle.title);
       hendleChangeText(props.selectedArticle.text);
@@ -14,19 +19,28 @@ export default props => {
 
   const getActionButton = () => {
     if (props.selectedArticle) {
-      return <button type="submit">Save article</button>;
+      return (
+        <button className="modalButtom" type="submit">
+          Save article
+        </button>
+      );
     } else {
-      return <button type="submit">Add article</button>;
+      return (
+        <button className="modalButtom" type="submit">
+          Add article
+        </button>
+      );
     }
   };
 
   const hendelSubmit = event => {
-    console.log("sdadfghnjm");
     event.preventDefault();
     event.stopPropagation();
     props.selectedArticle
-      ? props.updateArticle(title, text, props.selectedArticle.index)
-      : props.addArticle(title, text);
+      ? dispatch(A_EditArticlesRequest({ title, text, id: props.selectedArticle.id }))
+      : dispatch(A_AddArticlesRequest({ title, text }));
+    props.toggleModalWindow();
+    props.setArticle(null);
   };
 
   return (
@@ -41,7 +55,7 @@ export default props => {
         </div>
         <div className="form-actions">
           {getActionButton()}
-          <button type="button" onClick={props.toggleModalWindow}>
+          <button className="modalButtom" type="button" onClick={props.toggleModalWindow}>
             Close modal
           </button>
         </div>
